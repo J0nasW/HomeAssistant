@@ -1,0 +1,83 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: jonasw.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+  
+http:
+  base_url: https://jonasw.duckdns.org:8123
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  
+# THEME AREA
+# ------------------------------------------
+frontend:
+  themes: !include_dir_merge_named themes
+  
+# CUSTOM AREA
+# ------------------------------------------
+  
+#panel_iframe:
+#  tasmoadmin:
+#    title: TasmoAdmin
+#    icon: mdi:lightbulb-on
+#    url: https://192.168.2.27:9541
+    
+sensor:
+  - platform: deutsche_bahn
+    from: "Denickestraße, Hamburg"
+    to: "Hamburg-Harburg Rathaus"
+    only_direct: true
+  - platform: darksky
+    api_key: 472f2afe11fa9a6c435861c1cbeea29d
+    monitored_conditions:
+      - icon
+      - summary
+      - nearest_storm_distance
+      - nearest_storm_bearing
+      - humidity
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - wind_speed
+      - wind_bearing
+      - precip_type
+      - precip_probability
+      - precip_accumulation
+      - precip_intensity
+      - precip_intensity_max
+      - uv_index
+      - daily_summary
+      - pressure
+      - visibility
+    scan_interval:
+      minutes: 15
+  - platform: dht
+    sensor: DHT11
+    pin: 7
+    name: "livingroom_dht11"
+    monitored_conditions:
+      - temperature
+      - humidity
+
+# ------------------------------------------
+#customize:
+#  sensor.denickestrasse_hamburg_to_hamburg_harburg_rathaus:
+#    friendly_name: "Richtung S Harburg Rathaus"
+#    icon: mdi:bus-stop
+
+
+# -------------------------------------------
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml

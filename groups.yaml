@@ -1,0 +1,45 @@
+
+# CUSTOM AREA
+# ------------------------------------------
+
+  livingroom_lights:
+    name: Wohnzimmer
+    icon: mdi:ceiling-light
+    entities:
+      - light.tradfri_bulb_3
+      - light.tradfri_bulb_5
+      - light.tradfri_bulb_6
+      
+  bathroom_lights:
+    name: Bad
+    icon: mdi:ceiling-light
+    entities:
+      - light.tradfri_bulb_2
+      - light.tradfri_bulb_4
+      - light.tradfri_bulb_7
+
+  bedroom_lights:
+    name: Schlafzimmer
+    icon: mdi:ceiling-light
+    entities:
+      - light.schlafzimmer_deckenleuchte
+
+  kitchen_lights:
+    name: Küche
+    icon: mdi:ceiling-light
+    entities:
+      - light.hue_white_lamp_1_2
+      - light.hue_white_lamp_2_2
+
+  entry_lights:
+    name: Flur
+    icon: mdi:ceiling-light
+    entities:
+      - light.hue_white_lamp_1
+      - light.hue_white_lamp_2
+      
+  balcony_lights:
+    name: Balkon
+    icon: mdi:coach-lamp
+    entities:
+      - light.hue_outdoor_wall_1

@@ -1,0 +1,10 @@
+  - alias: Glatteisgefahr
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.dark_sky_temperature
+      below: 2
+    action:
+      service: notify.mobile_app_sm_g973f
+      data_template:
+        title: "Vorsicht, Glatteisgefahr!"
+        message: "Die Temperatur ist unter 2°C gefallen. Es könnte Glatteis auf den Straßen herrschen!"

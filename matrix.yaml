@@ -1,0 +1,65 @@
+# Be aware that this file contains options that could potentially break the add-on.
+# Make sure you know what you are doing before editing this file!
+server_name: jonasw.duckdns.org
+pid_file: /homeserver.pid
+federation_ip_range_blacklist:
+- 127.0.0.0/8
+- 10.0.0.0/8
+- 172.16.0.0/12
+- 192.168.0.0/16
+- 100.64.0.0/10
+- 169.254.0.0/16
+- ::1/128
+- fe80::/64
+- fc00::/7
+listeners:
+- port: 8448
+  tls: true
+  type: http
+  x_forwarded: true
+  resources:
+  - names:
+    - client
+    - federation
+    compress: false
+  bind_addresses:
+  - 0.0.0.0
+retention: null
+acme:
+  enabled: false
+  port: 80
+  bind_addresses:
+  - '::'
+  - 0.0.0.0
+  reprovision_threshold: 30
+  domain: matrix.example.com
+  account_key_file: /acme_account.key
+database:
+  name: sqlite3
+  args:
+    database: /share/matrix/matrix.db
+log_config: /data/matrix/jonasw.duckdns.org.log.config
+media_store_path: /share/matrix/media
+account_validity: null
+registration_shared_secret: J;^k7E=h:p_Kel+Yxpy+zUMLgJ3*41#CazpT*1,M#RyBdm6h-m
+account_threepid_delegates: null
+metrics_flags: null
+report_stats: false
+macaroon_secret_key: 'J=n9#_C65FgH.-AX7HUvAuzrVnRmxdP~0nwBWOyfl6:txYn=8:'
+form_secret: 03^UFT2ZKN0*uj,jy+t1Ab,8EZqjIOazH+4FUM^51&TSGIEGa-
+signing_key_path: /data/matrix/jonasw.duckdns.org.signing.key
+old_signing_keys: null
+trusted_key_servers:
+- server_name: matrix.org
+saml2_config:
+  user_mapping_provider:
+    config: null
+password_config: null
+email: null
+opentracing: null
+enable_registration: true
+uploads_path: /share/matrix/uploads
+max_upload_size: 200M
+no_tls: false
+tls_certificate_path: /ssl/fullchain.pem
+tls_private_key_path: /ssl/privkey.pem

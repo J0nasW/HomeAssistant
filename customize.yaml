@@ -1,0 +1,6 @@
+# CUSTOM AREA
+# ------------------------------------------
+
+  sensor.denickestrasse_hamburg_to_hamburg_harburg_rathaus:
+    friendly_name: "Richtung S Harburg Rathaus"
+    icon: mdi:bus-stop
